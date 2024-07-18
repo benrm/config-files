@@ -25,6 +25,7 @@ main = xmonad $ docks $ ewmhFullscreen $ ewmh $ def
 	, ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%-")
 	, ("<XF86AudioMute>", spawn "amixer set Master toggle")
 	, ("M-S-t", spawn "google-chrome-stable --profile-directory=\"Profile 1\" --restore-last-session")
+	, ("M-S-l", spawn "xscreensaver-command -lock")
 	]
 	`removeKeysP`
 	[ "M-p"
