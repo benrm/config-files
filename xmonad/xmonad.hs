@@ -6,8 +6,8 @@ import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Layout
 import XMonad.ManageHook
-import XMonad.Util.SpawnOnce
 import XMonad.Util.EZConfig
+import XMonad.Util.SpawnOnce
 
 main :: IO ()
 main = xmonad $ docks $ ewmhFullscreen $ ewmh $ def
@@ -21,11 +21,9 @@ main = xmonad $ docks $ ewmhFullscreen $ ewmh $ def
 	}
 	`additionalKeysP`
 	[ ("M-d", spawn "rofi -show drun")
-	, ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+")
-	, ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%-")
-	, ("<XF86AudioMute>", spawn "amixer set Master toggle")
 	, ("M-S-t", spawn "google-chrome-stable --profile-directory=\"Profile 1\" --restore-last-session")
 	, ("M-S-l", spawn "xscreensaver-command -lock")
+	, ("<Print>", spawn "scrot")
 	]
 	`removeKeysP`
 	[ "M-p"

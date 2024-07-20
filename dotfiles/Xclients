@@ -1,6 +1,14 @@
 #!/bin/sh
 set -e
 
+feh --bg-scale ~/.wallpapers/gradient.jpg &
+
+dunst &
+
+xscreensaver &
+
 picom &
+
+volume.sh &
 
 exec xmonad
