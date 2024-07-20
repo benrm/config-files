@@ -1,6 +1,10 @@
 #!/bin/sh
 set -e
 
+find acpi/ -type f | while read -r target ; do
+	sudo install -b -D "$target" "/etc/$target"
+done
+
 CONFIG_DIR="$XDG_CONFIG_HOME"
 if [ -z "$CONFIG_DIR" ] ; then
 	CONFIG_DIR="$HOME/.config"
