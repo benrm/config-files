@@ -9,6 +9,4 @@ xscreensaver &
 
 picom &
 
-volume.sh &
-
 exec xmonad
