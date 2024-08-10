@@ -8,8 +8,13 @@
       become: true
       loop:
         - alacritty
+        - dunst
+        - feh
+        - picom
         - polybar
+        - rofi
         - xmonad
+        - xscreensaver
     - name: Install Config Dir
       ansible.builtin.file:
         group: '{{ group }}'
@@ -35,6 +40,13 @@
         mode: '0644'
         owner: '{{ owner }}'
         src: 'polybar.ini.j2'
+    - name: Copy Xclients File
+      ansible.builtin.copy:
+        dest: '{{ home_directory }}/.Xclients'
+        group: '{{ group }}'
+        mode: '0755'
+        owner: '{{ owner }}'
+        src: Xclients
     - name: Copy XMonad Config File
       ansible.builtin.copy:
         dest: '{{ home_directory }}/.config/xmonad/xmonad.hs'
@@ -42,4 +54,10 @@
         mode: '0644'
         owner: '{{ owner }}'
         src: 'xmonad.hs'
-
+    - name: Copy Scripts Into bin/
+      ansible.builtin.copy:
+        dest: '{{ home_directory }}/bin/'
+        group: '{{ group }}'
+        mode: '0755'
+        owner: '{{ owner }}'
+        src: 'bin/'
