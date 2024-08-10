@@ -1,6 +1,45 @@
 ---
 - hosts: localhost
-  roles:
-    - alacritty
-    - polybar
-    - xmonad
+  tasks:
+    - name: Install Packages
+      ansible.builtin.dnf:
+        name: "{{ item }}"
+        state: present
+      become: true
+      loop:
+        - alacritty
+        - polybar
+        - xmonad
+    - name: Install Config Dir
+      ansible.builtin.file:
+        group: '{{ group }}'
+        mode: '0755'
+        owner: '{{ owner }}'
+        path: '{{ home_directory }}/.config/{{ item }}'
+        state: directory
+      loop:
+        - alacritty
+        - polybar
+        - xmonad
+    - name: Copy Alacritty Config File
+      ansible.builtin.copy:
+        dest: '{{ home_directory }}/.config/alacritty/alacritty.toml'
+        group: '{{ group }}'
+        mode: '0644'
+        owner: '{{ owner }}'
+        src: 'alacritty.toml'
+    - name: Install Polybar Config Template
+      ansible.builtin.template:
+        dest: '{{ home_directory }}/.config/polybar/config.ini'
+        group: '{{ group }}'
+        mode: '0644'
+        owner: '{{ owner }}'
+        src: 'polybar.ini.j2'
+    - name: Copy XMonad Config File
+      ansible.builtin.copy:
+        dest: '{{ home_directory }}/.config/xmonad/xmonad.hs'
+        group: '{{ group }}'
+        mode: '0644'
+        owner: '{{ owner }}'
+        src: 'xmonad.hs'
+
