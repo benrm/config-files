@@ -1,4 +1,5 @@
 # Purpose
 
-This is to contain the configuration files and scripts used by me. Right now
-it's mostly stubs and default configurations. It may evolve, it may not.
+These are Ansible playbooks to deploy my configuration files. I moved from
+shell scripts to Ansible because I didn't want to write my own templating and I
+was familiar with Ansible already.

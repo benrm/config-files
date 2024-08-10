@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Install Packages
+      ansible.builtin.dnf:
+        name: '{{ item }}'
+        state: present
+      become: true
+      loop:
+        - acpid
+        - brightnessctl
+    - name: Install ACPI Files
+      ansible.builtin.copy:
+        dest: '/etc/acpi/'
+        group: root
+        mode: '0755'
+        owner: root
+        src: 'files/acpi/'
+      become: true

@@ -3,7 +3,7 @@
   tasks:
     - name: Install Packages
       ansible.builtin.dnf:
-        name: "{{ item }}"
+        name: '{{ item }}'
         state: present
       become: true
       loop:
