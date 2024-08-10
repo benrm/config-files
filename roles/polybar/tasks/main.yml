@@ -1,0 +1,19 @@
+- name: Install Polybar
+  ansible.builtin.dnf:
+    name: polybar
+    state: latest
+  become: true
+- name: Install Config Dir
+  ansible.builtin.file:
+    group: '{{ group }}'
+    mode: '0755'
+    owner: '{{ owner }}'
+    path: '{{ home_directory }}/.config/polybar'
+    state: directory
+- name: Install Config Template
+  ansible.builtin.template:
+    dest: '{{ home_directory }}/.config/polybar/config.ini'
+    group: '{{ group }}'
+    mode: '0644'
+    owner: '{{ owner }}'
+    src: 'config.ini.j2'

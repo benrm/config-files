@@ -130,7 +130,8 @@ label-muted-foreground = ${colors.disabled}
 
 [module/battery]
 type = internal/battery
-adapter = AC
+adapter = {{ adapter }}
+battery = {{ battery }}
 
 label-charging = Charging %percentage%%
 label-discharging = Discharging %percentage%%
