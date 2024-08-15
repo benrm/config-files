@@ -1,5 +1,5 @@
 #!/bin/sh
 set -e
 
-pkill polybar
+pkill polybar || echo "No polybar running"
 polybar &
